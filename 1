@@ -1,0 +1,40 @@
+=== LAN Configuration (Star topology, 1 switch) ===
+Computer1: IP 192.168.1.10  Mask 255.255.255.0  MAC 00:1A:2B:3C:4D:01  Port 1
+Computer2: IP 192.168.1.11  Mask 255.255.255.0  MAC 00:1A:2B:3C:4D:02  Port 2
+Computer3: IP 192.168.1.12  Mask 255.255.255.0  MAC 00:1A:2B:3C:4D:03  Port 3
+Computer4: IP 192.168.2.5  Mask 255.255.255.0  MAC 00:1A:2B:3C:4D:04  Port 4
+
+Pinging 192.168.1.11 from Computer1 with 32 bytes of data:
+  Switch: learned 00:1A:2B:3C:4D:01 on port 1
+  Switch: 00:1A:2B:3C:4D:02 unknown -> flooding to all other ports
+  Switch: learned 00:1A:2B:3C:4D:02 on port 2
+  Reply from 192.168.1.11: bytes=32 time=1ms TTL=64
+  Reply from 192.168.1.11: bytes=32 time=1ms TTL=64
+  Reply from 192.168.1.11: bytes=32 time=1ms TTL=64
+  Reply from 192.168.1.11: bytes=32 time=1ms TTL=64
+  Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)
+
+Pinging 192.168.1.12 from Computer2 with 32 bytes of data:
+  Switch: 00:1A:2B:3C:4D:03 unknown -> flooding to all other ports
+  Switch: learned 00:1A:2B:3C:4D:03 on port 3
+  Reply from 192.168.1.12: bytes=32 time=1ms TTL=64
+  Reply from 192.168.1.12: bytes=32 time=1ms TTL=64
+  Reply from 192.168.1.12: bytes=32 time=1ms TTL=64
+  Reply from 192.168.1.12: bytes=32 time=1ms TTL=64
+  Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)
+
+Pinging 192.168.1.12 from Computer1 with 32 bytes of data:
+  Switch: forwarding only to port 3
+  Reply from 192.168.1.12: bytes=32 time=1ms TTL=64
+  Reply from 192.168.1.12: bytes=32 time=1ms TTL=64
+  Reply from 192.168.1.12: bytes=32 time=1ms TTL=64
+  Reply from 192.168.1.12: bytes=32 time=1ms TTL=64
+  Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)
+
+Pinging 192.168.2.5 from Computer1 with 32 bytes of data:
+  Destination host unreachable (different network - a router is needed)
+
+=== Switch MAC (CAM) Table ===
+00:1A:2B:3C:4D:01  -> Port 1
+00:1A:2B:3C:4D:02  -> Port 2
+00:1A:2B:3C:4D:03  -> Port 3
